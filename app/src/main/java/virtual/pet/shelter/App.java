@@ -7,17 +7,17 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        // ShelterClass shelter = new ShelterClass();
+        
         int adminChoice;
 
-                ShelterClass.inTakePets("Baxter", 10, 15, 20);
-                ShelterClass.inTakePets("Chance", 10, 10, 10);
-                ShelterClass.inTakePets("Oliver", 15, 20, 15);
-                
+            ShelterClass shelter = new ShelterClass();
+
+                shelter.inTakePets("Baxter", 10, 15, 20);
+                shelter.inTakePets("Chance", 10, 10, 10);
+                shelter.inTakePets("Oliver", 15, 20, 15);
 
             System.out.println("\nWelcome to the Pet Shelter!");
-            ShelterClass.allPetInfo();
+            shelter.allPetInfo();
 
     do {
 
@@ -27,34 +27,33 @@ public class App {
 
         switch (adminChoice) {
             case 1:
+                shelter.feedAllPets();
                 System.out.println("Pets have been Fed! ");
-                PetClass.feedPets();
                 break;
             case 2:
-                PetClass.waterPets();
+                shelter.waterAllPets();
                 System.out.println("Pets now have Water! ");
                 break;
             case 3:
-                
-                System.out.println(" ");
+                playWithPet(shelter);
                 break;
             case 4:
-                ShelterClass.adaptPets();
+                shelter.adaptPets();
                 break;
             case 5:
-                ShelterClass.assesNewPet();
+                shelter.assesNewPet();
                 break;
             case 6:
                 System.out.println( "Have a Great Night! See you tomorrow! ");
                 break;
             default:
-                    System.out.print("Please enter a valid selection: 1 = Feed, 2 = Water, 3 = Play, 4 = Do nothing, 5 = Don't leave me");
+                    System.out.print("Please enter a valid selection: 1 = Feed, 2 = Water, 3 = Play, 4 = Adopt, 5 = Admit, 6 = Clock out");
                 break;
         }
-        PetClass.tick();
+        shelter.allPetInfo();
             } while (adminChoice != 6);
 
-              scanner.close();  
+            scanner.close();  
     }
 
         //! Method for the Menu
@@ -68,8 +67,15 @@ public class App {
         System.out.println("Enter 6 to Clock out of the Shelter");
         }
 
-
-
+        //! Method for Playing
+        public static void playWithPet(ShelterClass shelter){
+            Scanner scanner = new Scanner(System.in);
+            shelter.allPetNames();
+            System.out.print("Enter Pet you wanna Play with: ");
+            String petName = scanner.nextLine();
+            shelter.playPet(petName);            
+            System.out.println("\n" + petName + " Had a blast!\n");
+        }
 
 
     }

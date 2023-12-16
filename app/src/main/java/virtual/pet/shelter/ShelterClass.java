@@ -1,26 +1,25 @@
 package virtual.pet.shelter;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class ShelterClass {
     //! Create a map
-    private static Map<String, PetClass> pets = new HashMap<>();
-    private static Map<String, PetClass> adopted = new HashMap<>();
+    private Map<String, PetClass> pets = new HashMap<>();
+    private Map<String, PetClass> adopted = new HashMap<>();
 
 
 
     //! Create methods
-    //! in take Pets
-    public static void inTakePets(String petName, int hunger, int thirst, int boredom){
+    //! intake Pets
+    public void inTakePets(String petName, int hunger, int thirst, int boredom){
         PetClass newPetClass = new PetClass(hunger, thirst, boredom);
         pets.put(petName, newPetClass);
     }
 
     //! asses new Pets
-    public static void assesNewPet(){
+    public void assesNewPet(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("New Pet Assessment!");
         System.out.println("Please enter new Pet Name: ");
@@ -38,7 +37,7 @@ public class ShelterClass {
     }
 
     //! Adopt Pets
-    public static void adaptPets(){
+    public void adaptPets(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Pet to be Adopted: ");
         allPetInfo();
@@ -49,8 +48,12 @@ public class ShelterClass {
     }
 
     //! Get all Pets
-    public Collection<PetClass> getAllPets(){
-        return pets.values();
+    public void allPetNames(){
+
+    for(Map.Entry<String, PetClass> entry : pets.entrySet()){
+        String key = entry.getKey();
+        System.out.println("Pet Name: " + key + " Boredom Level " + entry.getValue().getBoredom() + "%");
+    }
     }
 
     //! Get Pets by name
@@ -59,7 +62,7 @@ public class ShelterClass {
     }
 
     //! Display Pet info
-    public static void allPetInfo(){
+    public void allPetInfo(){
 
             if(!pets.isEmpty()){
                 System.out.println("Current in House Pets");
@@ -68,32 +71,45 @@ public class ShelterClass {
     for(Map.Entry<String, PetClass> entry : pets.entrySet()){
 
         String key = entry.getKey();
-        PetClass pets = entry.getValue();
-
-        System.out.println("Pet Name: " + key + " |Hunger Level: " + pets.getHunger() + "%  |Thirst Level " + pets.getThirst() + "%  |Boredom Level " + pets.getBoredom() + "%"  );
+        System.out.println("Pet Name: " + key + " |Hunger Level: " + pets.get(key).getHunger() + "%  |Thirst Level " + pets.get(key).getThirst() + "%  |Boredom Level " + pets.get(key).getBoredom() + "%"  );
     }
-
-}
+    }
 
     //! Display Adopted Pet info
         public void allAdoptedPets(){
-
             if(!adopted.isEmpty()){
                 System.out.println("All Adopted Pets");
             }
-
-    for(Map.Entry<String, PetClass> entry : pets.entrySet()){
-
+        for(Map.Entry<String, PetClass> entry : pets.entrySet()){
         String key = entry.getKey();
-        PetClass pets = entry.getValue();
+        System.out.println("Pet Name: " + key);
+        }
+        }
 
-        System.out.println("Pet Name: " + key );
+    //! Play with Pet
+    public void playPet(String petName){
+        PetClass pet = pets.get(petName);
+        pet.playPet();
+    }
+
+    //! Feed
+            public void feedAllPets(){
+        for(Map.Entry<String, PetClass> entry : pets.entrySet()){
+        entry.getValue().feedPets();
+        }
+        }
+
+    //! Water
+            public void waterAllPets(){
+        for(Map.Entry<String, PetClass> entry : pets.entrySet()){
+        entry.getValue().waterPets();
+        }
+        }
+
+
+
     }
 
 
-}
-
-
-}
 
 

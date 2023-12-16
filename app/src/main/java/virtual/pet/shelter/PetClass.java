@@ -2,76 +2,66 @@ package virtual.pet.shelter;
 
 public class PetClass {
 //? Attributes-------------------------------------------------------------------------------------------------|
-private static int hunger;
-private static int thirst;
-private static int boredom;
+private int hunger;
+private int thirst;
+private int boredom;
 
 
 //? Constructors-----------------------------------------------------------------------------------------------|
 public PetClass(int hunger, int thirst, int boredom) {
-    PetClass.hunger = hunger;
-    PetClass.thirst = thirst;
-    PetClass.boredom = boredom;
+    this.hunger = hunger;
+    this.thirst = thirst;
+    this.boredom = boredom;
 }
 
 //? Getters and Setters----------------------------------------------------------------------------------------|
 public int getHunger() {
-    return hunger;
+    return this.hunger;
 }
 
 
 public void setHunger(int hunger) {
-    PetClass.hunger = hunger;
+    this.hunger = hunger;
 }
 
 
 public int getThirst() {
-    return thirst;
+    return this.thirst;
 }
 
 
 public void setThirst(int thirst) {
-    PetClass.thirst = thirst;
+    this.thirst = thirst;
 }
 
 
 public int getBoredom() {
-    return boredom;
+    return this.boredom;
 }
 
 
 public void setBoredom(int boredom) {
-    PetClass.boredom = boredom;
+    this.boredom = boredom;
 }
 
 //! Methods----------------------------------------------------------------------------------------------------------
-
-public static void tick(){
+public void tick(){
     hunger += 10;
     thirst += 10;
     boredom += 10;
-    ShelterClass.allPetInfo();
 }
 
-
-public static void feedPets(){
-    hunger -= 30;
-    thirst += 10;
-    boredom += 10;
+public void feedPets(){
+    this.hunger -= 30;
 }
 
-public static void waterPets(){
-    hunger += 10;
-    thirst -= 30;
-    boredom += 10;
+public void waterPets(){
+    this.thirst -= 30;
 }
 
-public static void playWithPet(){
-    hunger += 10;
-    thirst += 10;
-    boredom -= 50;
+public void playPet(){
+    this.boredom -= 50;
 }
-
 
     
 }
