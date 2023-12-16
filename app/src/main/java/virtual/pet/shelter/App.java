@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
         int adminChoice;
 
             ShelterClass shelter = new ShelterClass();
@@ -50,6 +50,7 @@ public class App {
                     System.out.print("Please enter a valid selection: 1 = Feed, 2 = Water, 3 = Play, 4 = Adopt, 5 = Admit, 6 = Clock out");
                 break;
         }
+        shelter.tickTick();
         shelter.allPetInfo();
             } while (adminChoice != 6);
 

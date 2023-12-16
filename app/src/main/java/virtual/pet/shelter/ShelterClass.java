@@ -9,8 +9,6 @@ public class ShelterClass {
     private Map<String, PetClass> pets = new HashMap<>();
     private Map<String, PetClass> adopted = new HashMap<>();
 
-
-
     //! Create methods
     //! intake Pets
     public void inTakePets(String petName, int hunger, int thirst, int boredom){
@@ -103,6 +101,12 @@ public class ShelterClass {
             public void waterAllPets(){
         for(Map.Entry<String, PetClass> entry : pets.entrySet()){
         entry.getValue().waterPets();
+        }
+        }
+    //! Tick
+        public void tickTick(){
+        for(Map.Entry<String, PetClass> entry : pets.entrySet()){
+        entry.getValue().tick();
         }
         }
 
